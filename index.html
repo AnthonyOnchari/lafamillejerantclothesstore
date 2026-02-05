@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Famille Jerant | Luxury Made Accessible</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f5f2;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-family: 'Lora', serif;
+            font-size: 1.1rem;
+            color: #7a6a5a;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            width: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .product-image {
+            height: 350px;
+            overflow: hidden;
+            background-color: #f1ece5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.03);
+        }
+
+        .product-details {
+            padding: 25px;
+            text-align: left;
+        }
+
+        .product-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .product-description {
+            font-family: 'Lora', serif;
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1.3rem;
+            color: #b89a7a;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .product-price span {
+            font-size: 0.9rem;
+            color: #888;
+            font-weight: normal;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background-color: #25D366;
+            color: white;
+            padding: 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #1da851;
+        }
+
+        .whatsapp-icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .contact-info a {
+            color: #b89a7a;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-note {
+            margin-top: 40px;
+            color: #999;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .product-card {
+                width: 100%;
+                max-width: 350px;
+            }
+            .logo {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1 class="logo">La Famille Jerant</h1>
+        <p class="tagline">Luxury Made Accessible</p>
+    </header>
+
+    <div class="product-grid">
+        <!-- Product Card 1 -->
+        <div class="product-card">
+            <div class="product-image">
+                <!-- Replace with your image -->
+                <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Classic Blazer">
+            </div>
+            <div class="product-details">
+                <h2 class="product-title">Classic Wool Blazer</h2>
+                <p class="product-description">Timeless tailored blazer in premium wool blend. Perfect for formal and smart-casual occasions.</p>
+                <p class="product-price">KES 12,500 <span>(Inclusive of VAT)</span></p>
+                <a href="https://wa.me/254111444124?text=Hello%20La%20Famille%20Jerant,%20I'd%20like%20to%20order%20the%20'Classic%20Wool%20Blazer'%20(Size:%20)" class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp whatsapp-icon"></i> Order via WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <!-- Product Card 2 -->
+        <div class="product-card">
+            <div class="product-image">
+                <!-- Replace with your image -->
+                <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cashmere Sweater">
+            </div>
+            <div class="product-details">
+                <h2 class="product-title">Cashmere Turtleneck</h2>
+                <p class="product-description">Ultra-soft cashmere sweater for elegant comfort. Available in neutral tones.</p>
+                <p class="product-price">KES 9,800 <span>(Inclusive of VAT)</span></p>
+                <a href="https://wa.me/254111444124?text=Hello%20La%20Famille%20Jerant,%20I'd%20like%20to%20order%20the%20'Cashmere%20Turtleneck'%20(Size:%20)" class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp whatsapp-icon"></i> Order via WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div class="product-card">
+            <div class="product-image">
+                <!-- Replace with your image -->
+                <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Silk Scarf">
+            </div>
+            <div class="product-details">
+                <h2 class="product-title">Printed Silk Scarf</h2>
+                <p class="product-description">Lightweight silk scarf with exclusive floral print. Adds a touch of luxury to any outfit.</p>
+                <p class="product-price">KES 5,400 <span>(Inclusive of VAT)</span></p>
+                <a href="https://wa.me/254111444124?text=Hello%20La%20Famille%20Jerant,%20I'd%20like%20to%20order%20the%20'Printed%20Silk%20Scarf'" class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp whatsapp-icon"></i> Order via WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-info">
+        <p><strong>Location:</strong> Nairobi, Kenya</p>
+        <p><strong>Phone/WhatsApp:</strong> <a href="tel:+254111444124">+254 111 444 124</a></p>
+        <p><strong>Email:</strong> <a href="mailto:info@lafamillejerant.com">info@lafamillejerant.com</a> (replace with your actual email)</p>
+        <p><i>Free delivery within Nairobi • Nationwide shipping available</i></p>
+    </div>
+
+    <p class="footer-note">Luxury fashion with a personal touch. Message us directly for styling advice or custom requests.</p>
+</div>
+
+</body>
+</html>
