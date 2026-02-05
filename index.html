@@ -19,13 +19,14 @@
             line-height: 1.6;
         }
 
-        /* Header Styles */
+        /* Compact Header */
         header {
             background-color: white;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid #f0f0f0;
         }
 
         .header-container {
@@ -34,25 +35,27 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
+            padding: 12px 20px;
         }
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: #1a1a1a;
             text-decoration: none;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            font-weight: 600;
         }
 
         .logo span {
             color: #b89a7a;
+            font-weight: 400;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 25px;
             align-items: center;
         }
 
@@ -61,7 +64,8 @@
             color: #555;
             font-weight: 500;
             transition: color 0.3s ease;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
         }
 
         nav a:hover {
@@ -76,13 +80,14 @@
             display: none;
             position: absolute;
             background-color: white;
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            padding: 10px 0;
+            min-width: 180px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-radius: 6px;
+            padding: 8px 0;
             z-index: 1;
             top: 100%;
             left: 0;
+            border: 1px solid #f0f0f0;
         }
 
         .dropdown:hover .dropdown-content {
@@ -91,8 +96,9 @@
 
         .dropdown-content a {
             display: block;
-            padding: 10px 20px;
+            padding: 8px 16px;
             color: #555;
+            font-size: 0.9rem;
         }
 
         .dropdown-content a:hover {
@@ -116,15 +122,15 @@
 
         .hero-content h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            letter-spacing: 1.5px;
         }
 
         .hero-content p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             max-width: 700px;
-            margin: 0 auto 30px;
+            margin: 0 auto 25px;
             font-weight: 300;
         }
 
@@ -132,11 +138,12 @@
             display: inline-block;
             background-color: #b89a7a;
             color: white;
-            padding: 12px 30px;
+            padding: 10px 25px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             transition: background-color 0.3s ease;
+            font-size: 0.95rem;
         }
 
         .cta-button:hover {
@@ -146,31 +153,31 @@
         /* Main Content */
         .container {
             max-width: 1200px;
-            margin: 60px auto;
+            margin: 50px auto;
             padding: 0 20px;
         }
 
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
+            font-size: 2rem;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
             color: #1a1a1a;
         }
 
         /* Genre/Category Grid */
         .genre-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 35px;
         }
 
         .genre-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
             transition: transform 0.3s ease;
             text-decoration: none;
             color: inherit;
@@ -178,11 +185,12 @@
         }
 
         .genre-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
         }
 
         .genre-image {
-            height: 250px;
+            height: 220px;
             overflow: hidden;
         }
 
@@ -190,37 +198,42 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .genre-card:hover .genre-image img {
+            transform: scale(1.05);
         }
 
         .genre-info {
-            padding: 20px;
+            padding: 18px;
             text-align: center;
         }
 
         .genre-info h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
             color: #1a1a1a;
         }
 
-        /* Product Grid (for genre pages) */
+        /* Product Grid */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 35px;
         }
 
         .product-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
         }
 
         .product-image {
-            height: 300px;
+            height: 280px;
             overflow: hidden;
         }
 
@@ -236,20 +249,21 @@
         }
 
         .product-details {
-            padding: 20px;
+            padding: 18px;
         }
 
         .product-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #1a1a1a;
         }
 
         .product-price {
             color: #b89a7a;
             font-weight: 600;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
         }
 
         .whatsapp-btn {
@@ -259,11 +273,11 @@
             width: 100%;
             background-color: #25D366;
             color: white;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 10px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: background-color 0.3s ease;
         }
 
@@ -272,7 +286,8 @@
         }
 
         .whatsapp-icon {
-            margin-right: 8px;
+            margin-right: 6px;
+            font-size: 1rem;
         }
 
         /* About Us Page */
@@ -280,29 +295,29 @@
             max-width: 800px;
             margin: 0 auto;
             background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
         }
 
         .about-content h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 1.8rem;
+            margin-bottom: 18px;
             color: #1a1a1a;
         }
 
         .about-content p {
-            margin-bottom: 20px;
-            font-size: 1.05rem;
-            line-height: 1.8;
+            margin-bottom: 18px;
+            font-size: 1rem;
+            line-height: 1.7;
         }
 
         /* Footer */
         footer {
             background-color: #1a1a1a;
             color: #ddd;
-            padding: 50px 20px 20px;
+            padding: 40px 20px 20px;
             margin-top: 60px;
         }
 
@@ -310,30 +325,31 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
         }
 
         .footer-column h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
             color: #f8f5f2;
         }
 
         .footer-column p {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
         }
 
         .social-icons {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 15px;
         }
 
         .social-icons a {
             color: #ddd;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             transition: color 0.3s ease;
         }
 
@@ -343,10 +359,10 @@
 
         .copyright {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 35px;
             padding-top: 20px;
             border-top: 1px solid #333;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #aaa;
         }
 
@@ -359,13 +375,14 @@
             display: block;
         }
 
-        /* Back button for genre pages */
+        /* Back button */
         .back-button {
             display: inline-block;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             color: #b89a7a;
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.9rem;
         }
 
         .back-button:hover {
@@ -374,7 +391,7 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Compact Header -->
     <header>
         <div class="header-container">
             <a href="#" class="logo" onclick="showPage('home'); return false;">La Famille <span>Jerant</span></a>
@@ -415,7 +432,7 @@
                     </div>
                     <div class="genre-info">
                         <h3>Women's Wear</h3>
-                        <p>Elegant dresses, blouses, skirts & more</p>
+                        <p style="font-size:0.9rem;color:#666;">Elegant dresses, blouses, skirts</p>
                     </div>
                 </a>
                 
@@ -425,7 +442,7 @@
                     </div>
                     <div class="genre-info">
                         <h3>Men's Wear</h3>
-                        <p>Tailored suits, shirts, trousers & casuals</p>
+                        <p style="font-size:0.9rem;color:#666;">Tailored suits, shirts, casuals</p>
                     </div>
                 </a>
                 
@@ -435,7 +452,7 @@
                     </div>
                     <div class="genre-info">
                         <h3>Accessories</h3>
-                        <p>Bags, scarves, belts & jewelry</p>
+                        <p style="font-size:0.9rem;color:#666;">Bags, scarves, belts, jewelry</p>
                     </div>
                 </a>
                 
@@ -445,7 +462,7 @@
                     </div>
                     <div class="genre-info">
                         <h3>Formal Attire</h3>
-                        <p>Special occasion & event wear</p>
+                        <p style="font-size:0.9rem;color:#666;">Special occasion & event wear</p>
                     </div>
                 </a>
             </div>
@@ -458,7 +475,7 @@
             <a href="#" class="back-button" onclick="showPage('home'); return false;">← Back to Home</a>
             <h2 class="section-title">Women's Wear Collection</h2>
             <div class="product-grid">
-                <!-- Product cards will be generated here -->
+                <!-- Products will load here -->
             </div>
         </div>
     </section>
@@ -468,7 +485,7 @@
             <a href="#" class="back-button" onclick="showPage('home'); return false;">← Back to Home</a>
             <h2 class="section-title">Men's Wear Collection</h2>
             <div class="product-grid">
-                <!-- Product cards will be generated here -->
+                <!-- Products will load here -->
             </div>
         </div>
     </section>
@@ -478,7 +495,7 @@
             <a href="#" class="back-button" onclick="showPage('home'); return false;">← Back to Home</a>
             <h2 class="section-title">Accessories Collection</h2>
             <div class="product-grid">
-                <!-- Product cards will be generated here -->
+                <!-- Products will load here -->
             </div>
         </div>
     </section>
@@ -488,7 +505,7 @@
             <a href="#" class="back-button" onclick="showPage('home'); return false;">← Back to Home</a>
             <h2 class="section-title">Formal Attire Collection</h2>
             <div class="product-grid">
-                <!-- Product cards will be generated here -->
+                <!-- Products will load here -->
             </div>
         </div>
     </section>
@@ -499,7 +516,7 @@
             <h2 class="section-title">About La Famille Jerant</h2>
             <div class="about-content">
                 <h2>Our Story</h2>
-                <p>Founded with a passion for timeless elegance, La Famille Jerant is more than just a clothing store—it's a celebration of family heritage and curated style. We believe that luxury shouldn't be exclusive or intimidating.</p>
+                <p>Founded with a passion for timeless elegance, La Famille Jerant is more than just a clothing store—it's a celebration of family heritage and curated style.</p>
                 
                 <p>Our philosophy, <strong>"Luxury Made Accessible"</strong>, means we offer premium quality garments at fair prices, ensuring everyone can experience the confidence that comes with wearing beautifully crafted clothing.</p>
                 
@@ -507,12 +524,10 @@
                 <p>To provide thoughtfully designed, high-quality apparel that transcends seasonal trends. Each piece in our collection is selected for its craftsmanship, fabric quality, and versatility.</p>
                 
                 <h2>Why Choose Us?</h2>
-                <p>• <strong>Quality First:</strong> We source fabrics that feel as good as they look</p>
-                <p>• <strong>Personal Service:</strong> Order directly via WhatsApp for a personalized shopping experience</p>
-                <p>• <strong>Kenya-Wide Delivery:</strong> Free delivery within Nairobi, shipping available nationwide</p>
-                <p>• <strong>Easy Ordering:</strong> Browse online, order via WhatsApp, we deliver to your doorstep</p>
-                
-                <p>Thank you for choosing La Famille Jerant. We're honored to be part of your style journey.</p>
+                <p>• <strong>Quality First:</strong> Premium fabrics that feel as good as they look</p>
+                <p>• <strong>Personal Service:</strong> Order directly via WhatsApp for personalized shopping</p>
+                <p>• <strong>Kenya-Wide Delivery:</strong> Free delivery in Nairobi, nationwide shipping</p>
+                <p>• <strong>Easy Ordering:</strong> Browse online, order via WhatsApp, we deliver</p>
             </div>
         </div>
     </section>
@@ -600,7 +615,7 @@
             const productGrid = document.querySelector(`#genre-${genre} .product-grid`);
             if (!productGrid) return;
             
-            // Sample products data (you'll replace with your actual products)
+            // Sample products data
             const products = {
                 'women': [
                     { name: "Silk Evening Dress", price: "KES 14,500", image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" },
@@ -655,7 +670,6 @@
         
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
-            // Start on home page
             showPage('home');
         });
     </script>
