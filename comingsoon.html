@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Famille Jerant | Coming Soon</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/v1logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .coming-soon {
+            padding: 80px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .coming-soon h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .coming-soon p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .email-form {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            display: flex;
+            gap: 10px;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+        
+        .email-input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .email-input:focus {
+            outline: none;
+            border-color: #b89a7a;
+        }
+        
+        .submit-btn {
+            padding: 12px 30px;
+            background-color: #b89a7a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover:not(:disabled) {
+            background-color: #a88765;
+        }
+        
+        .submit-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .success-message {
+            color: #28a745;
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+            display: none;
+        }
+        
+        .error-message {
+            color: #dc3545;
+            background: #f8d7da;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+            display: none;
+        }
+        
+        .home-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        
+        .home-button:hover {
+            background-color: #555;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .coming-soon {
+                padding: 40px 15px;
+            }
+            
+            .coming-soon h1 {
+                font-size: 28px;
+            }
+            
+            .form-group {
+                flex-direction: column;
+            }
+            
+            .email-input, .submit-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Ultra Compact Header -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="assets/v1logo.png" alt="La Famille Jerant Logo" class="logo-image">
+                La Famille <span>Jerant</span>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">Genres ▾</a>
+                        <div class="dropdown-content">
+                            <a href="index.html#women">Women's Wear</a>
+                            <a href="index.html#men">Men's Wear</a>
+                            <a href="index.html#accessories">Accessories</a>
+                            <a href="#" onclick="return false;">Children Wear</a>
+                        </div>
+                    </li>
+                    <li><a href="index.html#about">About Us</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Mobile Hamburger Button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation (hidden by default) -->
+        <nav class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>
+                    <button class="mobile-dropdown-btn" onclick="toggleMobileDropdown()">
+                        Genres <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="mobile-dropdown-content" id="mobileDropdown">
+                        <a href="index.html#women">Women's Wear</a>
+                        <a href="index.html#men">Men's Wear</a>
+                        <a href="index.html#accessories">Accessories</a>
+                        <a href="#" onclick="return false;">Children Wear</a>
+                    </div>
+                </li>
+                <li><a href="index.html#about">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="coming-soon">
+            <h1>Coming Soon</h1>
+            <p>We're excited to announce that we're working on something special!</p>
+            <p>Our new collection is currently in development and will be launching soon.</p>
+            
+            <div class="email-form">
+                <h3><i class="fas fa-envelope" style="color:#b89a7a;"></i> Get Notified When We Launch</h3>
+                <p>Leave your email below and we'll contact you as soon as we're up and running.</p>
+                
+                <div id="successMessage" class="success-message">
+                    <i class="fas fa-check-circle"></i> Thank you! We've added you to our notification list.
+                </div>
+                
+                <div id="errorMessage" class="error-message">
+                    <i class="fas fa-exclamation-circle"></i> <span id="errorText">Something went wrong. Please try again.</span>
+                </div>
+                
+                <form id="emailForm">
+                    <div class="form-group">
+                        <input type="email" class="email-input" id="userEmail" placeholder="Enter your email address" required>
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <span id="btnText">Notify Me</span>
+                            <span id="btnLoader" class="loading" style="display:none;"></span>
+                        </button>
+                    </div>
+                    <p style="font-size: 14px; color: #888; margin-top: 10px;">
+                        <i class="fas fa-lock"></i> We respect your privacy. Your email is safe with us.
+                    </p>
+                </form>
+            </div>
+            
+            <p>In the meantime, feel free to explore our current collections.</p>
+            <a href="index.html" class="home-button">
+                <i class="fas fa-home"></i> Back to Homepage
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>La Famille Jerant</h3>
+                <p><strong>Luxury Made Accessible</strong></p>
+                <p>Premium online boutique with personal service.</p>
+                <div class="social-icons">
+                    <a href="https://facebook.com/YourPage" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/YourProfile" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://tiktok.com/@lafamillejerant" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p><i class="fas fa-phone"></i> WhatsApp: <a href="https://wa.me/254111444124" style="color:#b89a7a;">+254 111 444 124</a></p>
+                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:lafamillejerant@gmail.com" style="color:#b89a7a;">lafamillejerant@gmail.com</a></p>
+                <p><i class="fas fa-truck"></i> Delivery within Nairobi</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <p><a href="index.html" style="color:#ddd;">Home</a></p>
+                <p><a href="index.html#about" style="color:#ddd;">About Us</a></p>
+                <p><a href="assets/LaFamilleJerant-CompanyProfile.pdf" target="_blank" style="color:#ddd;">Company Profile</a></p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2026 La Famille Jerant. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Google Sheets Configuration
+        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+        // Replace YOUR_SCRIPT_ID with your Google Apps Script deployment ID
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('emailForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnLoader = document.getElementById('btnLoader');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
+            
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const emailInput = document.getElementById('userEmail');
+                const email = emailInput.value.trim();
+                
+                // Basic email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                if (!email) {
+                    showError('Please enter your email address.');
+                    return;
+                }
+                
+                if (!emailRegex.test(email)) {
+                    showError('Please enter a valid email address.');
+                    return;
+                }
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                btnText.textContent = 'Saving...';
+                btnLoader.style.display = 'inline-block';
+                
+                try {
+                    // Send to Google Sheets
+                    const response = await saveToGoogleSheets(email);
+                    
+                    if (response.result === 'success') {
+                        // Show success message
+                        successMessage.style.display = 'block';
+                        errorMessage.style.display = 'none';
+                        
+                        // Clear the form
+                        emailInput.value = '';
+                        
+                        // Hide success message after 5 seconds
+                        setTimeout(() => {
+                            successMessage.style.display = 'none';
+                        }, 5000);
+                    } else {
+                        showError(response.message || 'Failed to save your email.');
+                    }
+                } catch (error) {
+                    showError('Network error. Please check your connection and try again.');
+                    console.error('Error:', error);
+                } finally {
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Notify Me';
+                    btnLoader.style.display = 'none';
+                }
+            });
+            
+            function showError(message) {
+                errorText.textContent = message;
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                
+                // Hide error message after 5 seconds
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 5000);
+            }
+            
+            async function saveToGoogleSheets(email) {
+                // Add timestamp
+                const timestamp = new Date().toISOString();
+                
+                // Prepare data
+                const formData = new FormData();
+                formData.append('timestamp', timestamp);
+                formData.append('email', email);
+                formData.append('source', 'coming-soon-page');
+                
+                // Send to Google Sheets
+                const response = await fetch(GOOGLE_SHEETS_URL, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors' // Note: 'no-cors' has limitations
+                });
+                
+                // Note: With 'no-cors', we can't read the response
+                // For better error handling, you'll need to deploy your script differently
+                return { result: 'success', message: 'Email saved successfully!' };
+            }
+        });
+        
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        if (mobileMenuBtn && mobileNav) {
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            function toggleMobileDropdown() {
+                const dropdown = document.getElementById('mobileDropdown');
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            }
+        }
+    </script>
+</body>
+</html>
