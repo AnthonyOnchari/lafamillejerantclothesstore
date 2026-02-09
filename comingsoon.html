@@ -269,7 +269,8 @@
     </footer>
 
    <script>
-    const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyPyUahSescW-fg2WTCwo0dBq3uFb-XkmwLGiuMRh_KPVUfTUkGg6H96vjyDS52teuN/exec';
+    // ✅ CORRECT NEW URL - Use the one you just gave me
+    const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwn6jaQAgSOmuFRtx4E7lZPu6I4Y1kh_eKNTWTmCkDqpmrhm5tdxwdbbMZ7B4VEOA_1Iw/exec';
     
     document.addEventListener('DOMContentLoaded', function() {
         const form = document.getElementById('emailForm');
@@ -284,8 +285,9 @@
             const emailInput = document.getElementById('userEmail');
             const email = emailInput.value.trim();
             
-            if (!email || !email.includes('@') || !email.includes('.')) {
-                showError('Please enter valid email.');
+            // Email validation
+            if (!email || email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+                showError('Please enter a valid email address (name@example.com)');
                 return;
             }
             
@@ -295,28 +297,46 @@
             document.getElementById('btnLoader').style.display = 'inline-block';
             
             try {
-                // ✅ CORRECT: Include both email AND source parameters
-                const url = `${GOOGLE_SHEETS_URL}?email=${encodeURIComponent(email)}&source=coming-soon-page`;
+                // Build URL with parameters
+                const params = new URLSearchParams({
+                    'email': email,
+                    'source': 'coming-soon-page'
+                });
                 
+                const url = `${GOOGLE_SHEETS_URL}?${params.toString()}`;
+                console.log('Sending request to:', url);
+                
+                // Send to Google Sheets
                 const response = await fetch(url);
-                const result = await response.text();
-                console.log('Result:', result);
                 
-                // Show success
-                successMessage.style.display = 'block';
-                errorMessage.style.display = 'none';
-                emailInput.value = '';
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
                 
-                setTimeout(() => {
-                    successMessage.style.display = 'none';
-                }, 5000);
+                const result = await response.json();
+                console.log('Response from server:', result);
+                
+                if (result.success === true || result.status === 'success') {
+                    // SUCCESS!
+                    successMessage.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                    emailInput.value = '';
+                    
+                    // Update success message with the email
+                    successMessage.innerHTML = `<i class="fas fa-check-circle"></i> Thank you! We've added <strong>${email}</strong> to our notification list.`;
+                    
+                    // Hide message after 5 seconds
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                } else {
+                    // Server returned error
+                    showError(result.message || 'Failed to save email. Please try again.');
+                }
                 
             } catch (error) {
                 console.error('Error:', error);
-                // Still show success to user
-                successMessage.style.display = 'block';
-                errorMessage.style.display = 'none';
-                emailInput.value = '';
+                showError('Network error. Please try again.');
             } finally {
                 // Reset button
                 submitBtn.disabled = false;
@@ -330,12 +350,27 @@
             errorMessage.style.display = 'block';
             successMessage.style.display = 'none';
             
+            // Hide error after 5 seconds
             setTimeout(() => {
                 errorMessage.style.display = 'none';
             }, 5000);
         }
         
-        // Mobile menu code...
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        if (mobileMenuBtn && mobileNav) {
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            // Make function available for onclick attribute
+            window.toggleMobileDropdown = function() {
+                const dropdown = document.getElementById('mobileDropdown');
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            };
+        }
     });
 </script>
 </body>
