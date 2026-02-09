@@ -271,7 +271,6 @@
     <script>
         // Google Sheets Configuration
         const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxgBhOtY_LwZZlEuOawsAQyHWM92b1l2yAc006srdnSmyhbHYG80-ESIjg9lFqMgm83/exec';
-        // Replace YOUR_SCRIPT_ID with your Google Apps Script deployment ID
         
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('emailForm');
@@ -308,9 +307,19 @@
                 
                 try {
                     // Send to Google Sheets
-                    const response = await saveToGoogleSheets(email);
+                    const response = await fetch(GOOGLE_SHEETS_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: new URLSearchParams({
+                            'timestamp': new Date().toISOString(),
+                            'email': email,
+                            'source': 'coming-soon-page'
+                        })
+                    });
                     
-                    if (response.result === 'success') {
+                    if (response.ok) {
                         // Show success message
                         successMessage.style.display = 'block';
                         errorMessage.style.display = 'none';
@@ -323,8 +332,9 @@
                             successMessage.style.display = 'none';
                         }, 5000);
                     } else {
-                        showError(response.message || 'Failed to save your email.');
+                        showError('Failed to save your email. Please try again.');
                     }
+                    
                 } catch (error) {
                     showError('Network error. Please check your connection and try again.');
                     console.error('Error:', error);
@@ -345,28 +355,6 @@
                 setTimeout(() => {
                     errorMessage.style.display = 'none';
                 }, 5000);
-            }
-            
-            async function saveToGoogleSheets(email) {
-                // Add timestamp
-                const timestamp = new Date().toISOString();
-                
-                // Prepare data
-                const formData = new FormData();
-                formData.append('timestamp', timestamp);
-                formData.append('email', email);
-                formData.append('source', 'coming-soon-page');
-                
-                // Send to Google Sheets
-                const response = await fetch(GOOGLE_SHEETS_URL, {
-                    method: 'POST',
-                    body: formData,
-                    mode: 'no-cors' // Note: 'no-cors' has limitations
-                });
-                
-                // Note: With 'no-cors', we can't read the response
-                // For better error handling, you'll need to deploy your script differently
-                return { result: 'success', message: 'Email saved successfully!' };
             }
         });
         
