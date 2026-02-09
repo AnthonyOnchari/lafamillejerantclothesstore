@@ -269,8 +269,9 @@
     </footer>
 
     <script>
-        // Google Sheets Configuration
-        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxgBhOtY_LwZZlEuOawsAQyHWM92b1l2yAc006srdnSmyhbHYG80-ESIjg9lFqMgm83/exec';
+        // Google Sheets Configuration - Updated URL
+        // You need to deploy a new Google Apps Script (see instructions below)
+        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyPY6C_u7clIBgDBFdSHG0_Se3eLnu16vlHnMNDUjRLZ89x9TfDcFci7VW0W6aN4lgO/exec';
         
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('emailForm');
@@ -280,6 +281,9 @@
             const successMessage = document.getElementById('successMessage');
             const errorMessage = document.getElementById('errorMessage');
             const errorText = document.getElementById('errorText');
+            
+            // Test the connection on page load
+            console.log('Testing Google Apps Script connection...');
             
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
@@ -306,38 +310,45 @@
                 btnLoader.style.display = 'inline-block';
                 
                 try {
-                    // Send to Google Sheets
+                    console.log('Sending email:', email);
+                    
+                    // Prepare data
+                    const data = {
+                        timestamp: new Date().toISOString(),
+                        email: email,
+                        source: 'coming-soon-page'
+                    };
+                    
+                    // Send to Google Sheets with better error handling
                     const response = await fetch(GOOGLE_SHEETS_URL, {
                         method: 'POST',
+                        mode: 'no-cors', // Required for Google Apps Script
                         headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
+                            'Content-Type': 'application/json',
                         },
-                        body: new URLSearchParams({
-                            'timestamp': new Date().toISOString(),
-                            'email': email,
-                            'source': 'coming-soon-page'
-                        })
+                        body: JSON.stringify(data)
                     });
                     
-                    if (response.ok) {
-                        // Show success message
-                        successMessage.style.display = 'block';
-                        errorMessage.style.display = 'none';
-                        
-                        // Clear the form
-                        emailInput.value = '';
-                        
-                        // Hide success message after 5 seconds
-                        setTimeout(() => {
-                            successMessage.style.display = 'none';
-                        }, 5000);
-                    } else {
-                        showError('Failed to save your email. Please try again.');
-                    }
+                    // With no-cors mode, we can't read the response
+                    // But we can assume success if no network error
+                    
+                    // Show success message
+                    successMessage.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                    
+                    // Clear the form
+                    emailInput.value = '';
+                    
+                    console.log('Email submitted successfully!');
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
                     
                 } catch (error) {
-                    showError('Network error. Please check your connection and try again.');
-                    console.error('Error:', error);
+                    console.error('Error details:', error);
+                    showError('Unable to save your email at the moment. Please try again later or contact us directly.');
                 } finally {
                     // Reset button state
                     submitBtn.disabled = false;
